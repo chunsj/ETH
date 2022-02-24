@@ -14,7 +14,7 @@
 #define RES_HASH "a7ea1de3a8007134900cd2c86f7e55af68a1d3e4537438a0a966b6cbafa23c90"
 
 int
-myReadFileToMemory (const char *filename, uint8_t *bytes) {
+readDAG (const char *filename, uint8_t *bytes) {
   uint size = 0;
   FILE *pf = fopen(filename, "rb");
   if (!pf) {
@@ -154,7 +154,7 @@ myUserMain (cl_context context, cl_command_queue command_queue, cl_program progr
   }
 
   memset(pDAG, 0, sizeDAG);
-  myReadFileToMemory(DATA_FILE_NAME, pDAG);
+  readDAG(DATA_FILE_NAME, pDAG);
 
   uint8_t headerBytes[HEADER_HASH_STRING_LEN/2];
   hexStringToBytes(HEADER_HASH_STRING, HEADER_HASH_STRING_LEN, headerBytes);
